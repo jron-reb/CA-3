@@ -32,32 +32,6 @@ def get_covid() -> str:
     cum_deaths = ' The number of cumulative deaths is ' + str(data['cumDeathsByDeathDate']) + '. '
     return date + new_cases + cum_cases + new_deaths + cum_deaths
 
-current_threshold_level = '3'
-
-def covid_threshold_check():
-    """ Polls the ukcovid api in order to find if the coronavirus has exceed a user set threshold in a given area """
-    with open('config.json') as config_file:
-        data = json.load(config_file)
-
-    filters = [
-        'areaType=' + data["uk_covid19"][0]["area_type"],
-        'areaName=' + data["uk_covid19"][0]["area_name"]
-    ]
-
-    structure = data["uk_covid19"][0]["structure"]
-
-    api = Cov19API(filters=filters, structure=structure, latest_by = "newDeathsByDeathDate")
-
-    covid_info = api.get_json()
-    covid_data = covid_info['data'][0]
-    new_cases = covid_data['newCasesByPublishDate']
-    new_deaths = covid_data['newDeathsByDeathDate']
-    current_threshold_level = '3'
-    threshold_above = str(int(current_threshold_level) + 1)
-    threshold_below = str(int(current_threshold_level) - 1)
-    return (data['threshold_levels'][0][threshold_above])
-
-
 def covid_api_checker() -> int:
     """Function finds the HTTP response code when polling the api """
     endpoint = endpoint = (
