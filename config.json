@@ -10,13 +10,6 @@
 		"weather_api": "6daee95e46114e191f434b932b19ff7a",
 		"city_name": ["Exeter"]
 	}],
-	"threshold_levels": [{
-		"1": "1000",
-		"2": "5000",
-		"3": "10000",
-		"4": "20000",
-		"5": "50000"
-	}],
 	"notification_delay_before_removal": 3,
 	"uk_covid19": [{
 		"area_type": "nation",
